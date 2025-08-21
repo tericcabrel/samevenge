@@ -2,10 +2,10 @@
 
 import { useCallback, useState } from 'react';
 import type { Service } from '@/constants/aws-services';
-import { copyToClipboardWithFeedback } from '@/utils/clipboard';
-import { downloadJsonFile } from '@/utils/file-download';
-import { validateJson } from '@/utils/json-validation';
-import { updateObjectByPath } from '@/utils/update-object-by-path';
+import { copyToClipboardWithFeedback } from '@/lib/clipboard';
+import { downloadJsonFile } from '@/lib/file-download';
+import { validateJson } from '@/lib/json-validation';
+import { updateObjectByPath } from '@/lib/update-object-by-path';
 
 export type EventType = {
   eventName: string;
@@ -96,24 +96,37 @@ export const useEventGenerator = () => {
   }, []);
 
   const setJsonBody = useCallback((jsonBody: string) => {
-    const validation = validateJson(jsonBody);
-
     setState((prev) => ({
       ...prev,
       jsonBody,
-      isValid: validation.isValid,
-      error: validation.error || null,
       generatedEvent: null,
+      error: null,
     }));
   }, []);
 
   const generateEvent = useCallback(() => {
-    if (!state.selectedService || !state.selectedEvent || !state.isValid) {
+    if (!state.selectedService || !state.selectedEvent) {
+      return;
+    }
+
+    const validation = validateJson(state.jsonBody);
+    if (!validation.isValid) {
+      setState((prev) => ({
+        ...prev,
+        isValid: false,
+        error: validation.error || 'Invalid JSON',
+        generatedEvent: null,
+      }));
       return;
     }
 
     try {
-      // Find the selected event type template
+      setState((prev) => ({
+        ...prev,
+        isValid: true,
+        error: null,
+      }));
+
       const selectedEventType = state.eventTypes.find((eventType) => eventType.eventName === state.selectedEvent);
 
       if (!selectedEventType) {
@@ -139,7 +152,6 @@ export const useEventGenerator = () => {
         }
       }
 
-      // Create the final event structure
       const event = {
         service: state.selectedService.name,
         eventType: state.selectedEvent,
@@ -150,7 +162,7 @@ export const useEventGenerator = () => {
           serviceDisplayName: state.selectedService.displayName,
           serviceCategory: state.selectedService.category,
           generatedAt: new Date().toISOString(),
-          samVersion: '1.142.1', // This could be dynamic in the future
+          samVersion: process.env.NEXT_PUBLIC_SAM_CLI_VERSION,
         },
       };
 
@@ -166,14 +178,12 @@ export const useEventGenerator = () => {
         generatedEvent: null,
       }));
     }
-  }, [state.selectedService, state.selectedEvent, state.eventTypes, state.jsonBody, state.isValid]);
+  }, [state.selectedService, state.selectedEvent, state.eventTypes, state.jsonBody]);
 
   const copyToClipboard = useCallback(() => {
     if (!state.generatedEvent) {
       return false;
     }
-
-    // Copy the merged event (the actual event payload)
     const eventString = JSON.stringify(state.generatedEvent.mergedEvent, null, 2);
     return copyToClipboardWithFeedback(eventString);
   }, [state.generatedEvent]);
@@ -184,7 +194,6 @@ export const useEventGenerator = () => {
     }
 
     const filename = `${state.selectedService?.name}-${state.selectedEvent}-event`;
-    // Download the merged event (the actual event payload)
     downloadJsonFile(state.generatedEvent.mergedEvent, filename);
   }, [state.generatedEvent, state.selectedService, state.selectedEvent]);
 

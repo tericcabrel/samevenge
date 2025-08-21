@@ -1,5 +1,6 @@
 {
   "name": "aws-sam-event-generator",
+  "description": "Generate AWS SAM events for local testing",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -11,6 +12,9 @@
     "format": "biome format .",
     "format:fix": "biome format --write .",
     "type-check": "tsc --noEmit",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:ui": "vitest --ui",
     "generate-services": "node scripts/generate-services.mjs",
     "generate-templates": "node scripts/generate-templates.mjs"
   },
@@ -41,6 +45,7 @@
     "tailwindcss": "^4",
     "tw-animate-css": "1.3.7",
     "typescript": "^5",
+    "vitest": "3.2.4",
     "zx": "8.8.0"
   },
   "packageManager": "yarn@4.9.2"

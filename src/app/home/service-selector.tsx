@@ -2,9 +2,9 @@
 
 import { useCallback, useMemo, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
+import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AWS_SERVICES, type Service } from '@/constants/aws-services';
-import { Label } from '@radix-ui/react-label';
 
 type ServiceSelectorProps = {
   selectedService: Service | null;
@@ -41,7 +41,7 @@ const CATEGORY_LABELS = {
   other: 'Other',
 } as const;
 
-export function ServiceSelector({ selectedService, onServiceSelect }: ServiceSelectorProps) {
+export const ServiceSelector = ({ selectedService, onServiceSelect }: ServiceSelectorProps) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredServices = useMemo(() => {
@@ -81,7 +81,6 @@ export function ServiceSelector({ selectedService, onServiceSelect }: ServiceSel
           <SelectValue placeholder="Search and select a service..." />
         </SelectTrigger>
         <SelectContent className="max-h-[300px]">
-          {/* Search Input */}
           <div className="sticky top-0 bg-background border-b p-2">
             <input
               placeholder="Search services..."
@@ -92,7 +91,6 @@ export function ServiceSelector({ selectedService, onServiceSelect }: ServiceSel
             />
           </div>
 
-          {/* Service List */}
           <div className="max-h-[250px] overflow-y-auto">
             {filteredServices.length === 0 ? (
               <div className="p-4 text-center text-muted-foreground">
@@ -114,7 +112,6 @@ export function ServiceSelector({ selectedService, onServiceSelect }: ServiceSel
         </SelectContent>
       </Select>
 
-      {/* Results Summary */}
       {searchQuery ? (
         <div className="text-sm text-muted-foreground">
           Showing {filteredServices.length} of {AWS_SERVICES.length} services
@@ -122,4 +119,4 @@ export function ServiceSelector({ selectedService, onServiceSelect }: ServiceSel
       ) : null}
     </div>
   );
-}
+};

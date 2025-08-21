@@ -1,9 +1,9 @@
 'use client';
 
+import { ServiceSelector } from '@/app/home/service-selector';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useEventGenerator } from '@/hooks/use-event-generator';
-import { ServiceSelector } from '@/app/home/service-selector';
 import { EventPayloadInput } from './event-payload-input';
 import { ServiceEventTypeSelector } from './service-event-type-selector';
 
@@ -48,7 +48,7 @@ export const SamGeneratorContainer = () => {
           <CardContent>
             {state.generatedEvent ? (
               <div className="space-y-4">
-                <pre className="bg-muted p-4 rounded-md overflow-x-auto text-sm h-[540px] overflow-y-auto">
+                <pre className="bg-muted p-4 rounded-md overflow-x-auto text-sm h-[400px] overflow-y-auto">
                   <code>{JSON.stringify(state.generatedEvent.mergedEvent, null, 2)}</code>
                 </pre>
                 <div className="flex gap-2">
@@ -72,10 +72,7 @@ export const SamGeneratorContainer = () => {
       </div>
       <div className="grid grid-cols-6">
         <div className="flex justify-center col-span-2">
-          <Button
-            size="lg"
-            disabled={!state.selectedService || !state.selectedEvent || !state.isValid}
-            onClick={actions.generateEvent}>
+          <Button size="lg" disabled={!state.selectedService || !state.selectedEvent} onClick={actions.generateEvent}>
             Generate Event
           </Button>
         </div>
