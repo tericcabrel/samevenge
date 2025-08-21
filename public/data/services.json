@@ -1,0 +1,326 @@
+[
+  {
+    "service": "alexa-skills-kit",
+    "events": [
+      {
+        "name": "end-session",
+        "description": "Generates an Amazon Alexa End Session Event"
+      },
+      {
+        "name": "intent-answer",
+        "description": "Generates an Amazon Alexa Intent Answer Event"
+      },
+      {
+        "name": "intent-getnewfact",
+        "description": "Generates an Amazon Alexa Intent GetNewFact Event"
+      },
+      {
+        "name": "intent-mycoloris",
+        "description": "Generates an Amazon Alexa Intent MyColorIs Event"
+      },
+      {
+        "name": "intent-recipe",
+        "description": "Generates an Amazon Alexa Intent Recipe Event"
+      },
+      {
+        "name": "start-session",
+        "description": "Generates an Amazon Alexa Start Session Event"
+      }
+    ]
+  },
+  {
+    "service": "apigateway",
+    "events": [
+      {
+        "name": "authorizer",
+        "description": "Generates an Amazon API Gateway Authorizer Event"
+      },
+      {
+        "name": "aws-proxy",
+        "description": "Generates an Amazon API Gateway AWS Proxy Event"
+      },
+      {
+        "name": "http-api-proxy",
+        "description": "Generates an Amazon API Gateway Http API Event"
+      },
+      {
+        "name": "request-authorizer",
+        "description": "Generates an Amazon API Gateway Request Authorizer Event"
+      }
+    ]
+  },
+  {
+    "service": "appsync",
+    "events": [
+      {
+        "name": "resolver",
+        "description": "Generates an AWS AppSync Event"
+      }
+    ]
+  },
+  {
+    "service": "cloudformation",
+    "events": [
+      {
+        "name": "create-request",
+        "description": "Generates an AWS CloudFormation Create Request Event"
+      }
+    ]
+  },
+  {
+    "service": "cloudfront",
+    "events": [
+      {
+        "name": "ab-test",
+        "description": "Generates an Amazon CloudFront A/B Test Event"
+      },
+      {
+        "name": "access-request-in-response",
+        "description": "Generates an Amazon CloudFront Access Request in Response Event"
+      },
+      {
+        "name": "http-redirect",
+        "description": "Generates an Amazon CloudFront HTTP Redirect Event"
+      },
+      {
+        "name": "modify-querystring",
+        "description": "Generates an Amazon CloudFront Modify QueryString Event"
+      },
+      {
+        "name": "modify-response-header",
+        "description": "Generates an Amazon CloudFront Modify Response Header Event"
+      },
+      {
+        "name": "multiple-remote-calls-aggregate-response",
+        "description": " Generates an Amazon CloudFront Multiple"
+      },
+      {
+        "name": "normalize-querystring-to-improve-cache-hit",
+        "description": " Generates an Amazon CloudFront Normalize"
+      },
+      {
+        "name": "redirect-on-viewer-country",
+        "description": "Generates an Amazon CloudFront Redirect on Viewer Country Event"
+      },
+      {
+        "name": "redirect-unauthenticated-users",
+        "description": "Generates an Amazon CloudFront Redirect Unauthenticated Users Event"
+      },
+      {
+        "name": "response-generation",
+        "description": "Generates an Amazon CloudFront Response Generation Event"
+      },
+      {
+        "name": "serve-object-on-viewer-device",
+        "description": "Generates an Amazon CloudFront Serve Object on Viewer Device Event"
+      },
+      {
+        "name": "simple-remote-call",
+        "description": "Generates an Amazon CloudFront Simple Remote Call Event"
+      }
+    ]
+  },
+  {
+    "service": "cloudwatch",
+    "events": [
+      {
+        "name": "logs",
+        "description": "Generates an Amazon Cloudwatch Logs Event"
+      },
+      {
+        "name": "scheduled-event",
+        "description": "Generates an Amazon CloudWatch Events Scheduled Event"
+      }
+    ]
+  },
+  {
+    "service": "codecommit",
+    "events": [
+      {
+        "name": "repository",
+        "description": "Generates an AWS CodeCommit Repository Event"
+      }
+    ]
+  },
+  {
+    "service": "codepipeline",
+    "events": [
+      {
+        "name": "job",
+        "description": "Generates an AWS CodePipeline Job Event"
+      }
+    ]
+  },
+  {
+    "service": "cognito",
+    "events": [
+      {
+        "name": "sync-trigger",
+        "description": "Generates an Amazon Cognito Sync Trigger Event"
+      }
+    ]
+  },
+  {
+    "service": "config",
+    "events": [
+      {
+        "name": "item-change-notification",
+        "description": "Generates an AWS Config Configuration Item Change Notification Event"
+      },
+      {
+        "name": "oversized-item-change-notification",
+        "description": " Generates an AWS Config Oversized"
+      },
+      {
+        "name": "periodic-rule",
+        "description": "Generates an AWS Config Periodic Rule Event"
+      }
+    ]
+  },
+  {
+    "service": "connect",
+    "events": [
+      {
+        "name": "contact-flow-event",
+        "description": "Generates an Amazon Connect Contact Flow Event"
+      }
+    ]
+  },
+  {
+    "service": "dynamodb",
+    "events": [
+      {
+        "name": "update",
+        "description": "Generates an Amazon DynamoDB Update Event"
+      }
+    ]
+  },
+  {
+    "service": "kinesis",
+    "events": [
+      {
+        "name": "analytics",
+        "description": "Generates an Amazon Kinesis Data Analytics Event"
+      },
+      {
+        "name": "analytics-compressed",
+        "description": "Generates an Amazon Kinesis Data Analytics Compressed Event"
+      },
+      {
+        "name": "analytics-dynamodb",
+        "description": "Generates an Amazon Kinesis Data Analytics DynamoDB Event"
+      },
+      {
+        "name": "analytics-kpl",
+        "description": "Generates an Amazon Kinesis Data Analytics KPL Event"
+      },
+      {
+        "name": "apachelog",
+        "description": "Generates an Amazon Kinesis Data Firehose Apachelog Event"
+      },
+      {
+        "name": "cloudwatch-logs-processor",
+        "description": "Generates an Amazon Kinesis Data Firehose Cloudwatch Logs Processor Event"
+      },
+      {
+        "name": "get-records",
+        "description": "Generates an Amazon Kinesis Data Stream Event"
+      },
+      {
+        "name": "kinesis-firehose",
+        "description": "Generates an Amazon Kinesis Data Firehose Event"
+      },
+      {
+        "name": "streams-as-source",
+        "description": "Generates an Amazon Kinesis Data Firehose Streams as Source Event"
+      },
+      {
+        "name": "syslog",
+        "description": "Generates an Amazon Kinesis Data Firehose Syslog Event"
+      }
+    ]
+  },
+  {
+    "service": "lex",
+    "events": [
+      {
+        "name": "book-car",
+        "description": "Generates an Amazon Lex Book Car Event"
+      },
+      {
+        "name": "book-hotel",
+        "description": "Generates an Amazon Lex Book Hotel Event"
+      },
+      {
+        "name": "make-appointment",
+        "description": "Generates an Amazon Lex Make Appointment Event"
+      },
+      {
+        "name": "order-flowers",
+        "description": "Generates an Amazon Lex Order Flowers Event"
+      }
+    ]
+  },
+  {
+    "service": "rekognition",
+    "events": [
+      {
+        "name": "s3-request",
+        "description": "Generates an Amazon Rekognition S3 Request Event"
+      }
+    ]
+  },
+  {
+    "service": "s3",
+    "events": [
+      {
+        "name": "batch-invocation",
+        "description": "Generates an Amazon S3 Batch Operations Invocation Event"
+      },
+      {
+        "name": "delete",
+        "description": "Generates an Amazon S3 Delete Event"
+      },
+      {
+        "name": "put",
+        "description": "Generates an Amazon S3 Put Event"
+      }
+    ]
+  },
+  {
+    "service": "ses",
+    "events": [
+      {
+        "name": "email-receiving",
+        "description": "Generates an Amazon SES Email Receiving Event"
+      }
+    ]
+  },
+  {
+    "service": "sns",
+    "events": [
+      {
+        "name": "notification",
+        "description": "Generates an Amazon SNS Topic Notification Event"
+      }
+    ]
+  },
+  {
+    "service": "sqs",
+    "events": [
+      {
+        "name": "receive-message",
+        "description": "Generates an Amazon SQS Event"
+      }
+    ]
+  },
+  {
+    "service": "stepfunctions",
+    "events": [
+      {
+        "name": "error",
+        "description": "Generates an AWS StepFunctions Error Event"
+      }
+    ]
+  }
+]

@@ -1,0 +1,299 @@
+{
+  "service": "alexa-skills-kit",
+  "eventNames": [
+    "end-session",
+    "intent-answer",
+    "intent-getnewfact",
+    "intent-mycoloris",
+    "intent-recipe",
+    "start-session"
+  ],
+  "lastUpdated": "2025-08-18T20:18:05.204Z",
+  "samVersion": "SAM CLI, version 1.142.1",
+  "templates": [
+    {
+      "eventName": "end-session",
+      "template": {
+        "version": "1.0",
+        "session": {
+          "new": false,
+          "sessionId": "amzn1.echo-api.session.123456789012",
+          "application": {
+            "applicationId": "amzn1.ask.skill.987654321"
+          },
+          "attributes": {},
+          "user": {
+            "userId": "amzn1.ask.account.testUser"
+          }
+        },
+        "context": {
+          "System": {
+            "application": {
+              "applicationId": "amzn1.ask.skill.987654321"
+            },
+            "user": {
+              "userId": "amzn1.ask.account.testUser"
+            },
+            "device": {
+              "supportedInterfaces": {
+                "AudioPlayer": {}
+              }
+            }
+          }
+        },
+        "request": {
+          "type": "SessionEndedRequest",
+          "requestId": "amzn1.echo-api.request.1234",
+          "timestamp": "2016-10-27T21:11:41Z",
+          "locale": "en-US",
+          "reason": "USER_INITIATED"
+        }
+      }
+    },
+    {
+      "eventName": "intent-answer",
+      "template": {
+        "version": "1.0",
+        "session": {
+          "new": false,
+          "sessionId": "amzn1.echo-api.session.123456789012",
+          "application": {
+            "applicationId": "amzn1.ask.skill.987654321"
+          },
+          "attributes": {
+            "score": 0,
+            "currentQuestionIndex": 0,
+            "speechOutput": "Question 1. What was Rudolph's father's name? 1. Blixen. 2. Comet. 3. Donner. 4. Dasher. ",
+            "correctAnswerText": "Donner",
+            "repromptText": "Question 1. What was Rudolph's father's name? 1. Blixen. 2. Comet. 3. Donner. 4. Dasher. ",
+            "questions": [16, 20, 29, 2, 19],
+            "STATE": "_TRIVIAMODE",
+            "correctAnswerIndex": 3
+          },
+          "user": {
+            "userId": "amzn1.ask.account.testUser"
+          }
+        },
+        "context": {
+          "AudioPlayer": {
+            "playerActivity": "IDLE"
+          },
+          "System": {
+            "application": {
+              "applicationId": "amzn1.ask.skill.987654321"
+            },
+            "user": {
+              "userId": "amzn1.ask.account.testUser"
+            },
+            "device": {
+              "supportedInterfaces": {
+                "AudioPlayer": {}
+              }
+            }
+          }
+        },
+        "request": {
+          "type": "IntentRequest",
+          "requestId": "amzn1.echo-api.request.1234",
+          "timestamp": "2016-10-27T21:06:28Z",
+          "locale": "en-US",
+          "intent": {
+            "name": "AnswerIntent",
+            "slots": {
+              "Item": {
+                "name": "Answer",
+                "value": "1"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "eventName": "intent-getnewfact",
+      "template": {
+        "version": "1.0",
+        "session": {
+          "new": false,
+          "sessionId": "amzn1.echo-api.session.123456789012",
+          "application": {
+            "applicationId": "amzn1.ask.skill.987654321"
+          },
+          "attributes": {},
+          "user": {
+            "userId": "amzn1.ask.account.testUser"
+          }
+        },
+        "context": {
+          "AudioPlayer": {
+            "playerActivity": "IDLE"
+          },
+          "System": {
+            "application": {
+              "applicationId": "amzn1.ask.skill.987654321"
+            },
+            "user": {
+              "userId": "amzn1.ask.account.testUser"
+            },
+            "device": {
+              "supportedInterfaces": {
+                "AudioPlayer": {}
+              }
+            }
+          }
+        },
+        "request": {
+          "type": "IntentRequest",
+          "requestId": "amzn1.echo-api.request.1234",
+          "timestamp": "2016-10-27T21:06:28Z",
+          "locale": "en-US",
+          "intent": {
+            "name": "GetNewFactIntent",
+            "slots": {}
+          }
+        }
+      }
+    },
+    {
+      "eventName": "intent-mycoloris",
+      "template": {
+        "version": "1.0",
+        "session": {
+          "new": false,
+          "sessionId": "amzn1.echo-api.session.123456789012",
+          "application": {
+            "applicationId": "amzn1.ask.skill.987654321"
+          },
+          "attributes": {},
+          "user": {
+            "userId": "amzn1.ask.account.testUser"
+          }
+        },
+        "context": {
+          "AudioPlayer": {
+            "playerActivity": "IDLE"
+          },
+          "System": {
+            "application": {
+              "applicationId": "amzn1.ask.skill.987654321"
+            },
+            "user": {
+              "userId": "amzn1.ask.account.testUser"
+            },
+            "device": {
+              "supportedInterfaces": {
+                "AudioPlayer": {}
+              }
+            }
+          }
+        },
+        "request": {
+          "type": "IntentRequest",
+          "requestId": "amzn1.echo-api.request.1234",
+          "timestamp": "2016-10-27T21:06:28Z",
+          "locale": "en-US",
+          "intent": {
+            "name": "MyColorIsIntent",
+            "slots": {
+              "Color": {
+                "name": "Color",
+                "value": "blue"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "eventName": "intent-recipe",
+      "template": {
+        "version": "1.0",
+        "session": {
+          "new": false,
+          "sessionId": "amzn1.echo-api.session.123456789012",
+          "application": {
+            "applicationId": "amzn1.ask.skill.987654321"
+          },
+          "attributes": {},
+          "user": {
+            "userId": "amzn1.ask.account.testUser"
+          }
+        },
+        "context": {
+          "AudioPlayer": {
+            "playerActivity": "IDLE"
+          },
+          "System": {
+            "application": {
+              "applicationId": "amzn1.ask.skill.987654321"
+            },
+            "user": {
+              "userId": "amzn1.ask.account.userId"
+            },
+            "device": {
+              "supportedInterfaces": {
+                "AudioPlayer": {}
+              }
+            }
+          }
+        },
+        "request": {
+          "type": "IntentRequest",
+          "requestId": "amzn1.echo-api.request.1234",
+          "timestamp": "2016-10-27T21:06:28Z",
+          "locale": "en-US",
+          "intent": {
+            "name": "RecipeIntent",
+            "slots": {
+              "Item": {
+                "name": "Item",
+                "value": "snowball"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "eventName": "start-session",
+      "template": {
+        "version": "1.0",
+        "session": {
+          "new": true,
+          "sessionId": "amzn1.echo-api.session.123456789012",
+          "application": {
+            "applicationId": "amzn1.ask.skill.987654321"
+          },
+          "user": {
+            "userId": "amzn1.ask.account.testUser"
+          },
+          "attributes": {}
+        },
+        "context": {
+          "AudioPlayer": {
+            "playerActivity": "IDLE"
+          },
+          "System": {
+            "application": {
+              "applicationId": "amzn1.ask.skill.987654321"
+            },
+            "user": {
+              "userId": "amzn1.ask.account.testUser"
+            },
+            "device": {
+              "supportedInterfaces": {
+                "AudioPlayer": {}
+              }
+            }
+          }
+        },
+        "request": {
+          "type": "LaunchRequest",
+          "requestId": "amzn1.echo-api.request.1234",
+          "timestamp": "2016-10-27T18:21:44Z",
+          "locale": "en-US"
+        }
+      }
+    }
+  ]
+}

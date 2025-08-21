@@ -1,0 +1,221 @@
+{
+  "service": "apigateway",
+  "eventNames": ["authorizer", "aws-proxy", "http-api-proxy", "request-authorizer"],
+  "lastUpdated": "2025-08-18T20:18:05.237Z",
+  "samVersion": "SAM CLI, version 1.142.1",
+  "templates": [
+    {
+      "eventName": "authorizer",
+      "template": {
+        "type": "TOKEN",
+        "authorizationToken": "incoming-client-token",
+        "methodArn": "arn:aws:execute-api:us-east-1:123456789012:/prod/POST/{proxy+}"
+      }
+    },
+    {
+      "eventName": "aws-proxy",
+      "template": {
+        "body": "eyJ0ZXN0IjoiYm9keSJ9",
+        "resource": "/{proxy+}",
+        "path": "/path/to/resource",
+        "httpMethod": "POST",
+        "isBase64Encoded": true,
+        "queryStringParameters": {
+          "foo": "bar"
+        },
+        "multiValueQueryStringParameters": {
+          "foo": ["bar"]
+        },
+        "pathParameters": {
+          "proxy": "/path/to/resource"
+        },
+        "stageVariables": {
+          "baz": "qux"
+        },
+        "headers": {
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+          "Accept-Encoding": "gzip, deflate, sdch",
+          "Accept-Language": "en-US,en;q=0.8",
+          "Cache-Control": "max-age=0",
+          "CloudFront-Forwarded-Proto": "https",
+          "CloudFront-Is-Desktop-Viewer": "true",
+          "CloudFront-Is-Mobile-Viewer": "false",
+          "CloudFront-Is-SmartTV-Viewer": "false",
+          "CloudFront-Is-Tablet-Viewer": "false",
+          "CloudFront-Viewer-Country": "US",
+          "Host": "1234567890.execute-api.us-east-1.amazonaws.com",
+          "Upgrade-Insecure-Requests": "1",
+          "User-Agent": "Custom User Agent String",
+          "Via": "1.1 08f323deadbeefa7af34d5feb414ce27.cloudfront.net (CloudFront)",
+          "X-Amz-Cf-Id": "cDehVQoZnx43VYQb9j2-nvCh-9z396Uhbp027Y2JvkCPNLmGJHqlaA==",
+          "X-Forwarded-For": "127.0.0.1, 127.0.0.2",
+          "X-Forwarded-Port": "443",
+          "X-Forwarded-Proto": "https"
+        },
+        "multiValueHeaders": {
+          "Accept": ["text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"],
+          "Accept-Encoding": ["gzip, deflate, sdch"],
+          "Accept-Language": ["en-US,en;q=0.8"],
+          "Cache-Control": ["max-age=0"],
+          "CloudFront-Forwarded-Proto": ["https"],
+          "CloudFront-Is-Desktop-Viewer": ["true"],
+          "CloudFront-Is-Mobile-Viewer": ["false"],
+          "CloudFront-Is-SmartTV-Viewer": ["false"],
+          "CloudFront-Is-Tablet-Viewer": ["false"],
+          "CloudFront-Viewer-Country": ["US"],
+          "Host": ["0123456789.execute-api.us-east-1.amazonaws.com"],
+          "Upgrade-Insecure-Requests": ["1"],
+          "User-Agent": ["Custom User Agent String"],
+          "Via": ["1.1 08f323deadbeefa7af34d5feb414ce27.cloudfront.net (CloudFront)"],
+          "X-Amz-Cf-Id": ["cDehVQoZnx43VYQb9j2-nvCh-9z396Uhbp027Y2JvkCPNLmGJHqlaA=="],
+          "X-Forwarded-For": ["127.0.0.1, 127.0.0.2"],
+          "X-Forwarded-Port": ["443"],
+          "X-Forwarded-Proto": ["https"]
+        },
+        "requestContext": {
+          "accountId": "123456789012",
+          "resourceId": "123456",
+          "stage": "prod",
+          "requestId": "c6af9ac6-7b61-11e6-9a41-93e8deadbeef",
+          "requestTime": "09/Apr/2015:12:34:56 +0000",
+          "requestTimeEpoch": 1428582896000,
+          "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": null,
+            "cognitoIdentityId": null,
+            "caller": null,
+            "accessKey": null,
+            "sourceIp": "127.0.0.1",
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": null,
+            "userAgent": "Custom User Agent String",
+            "user": null
+          },
+          "path": "/prod/path/to/resource",
+          "resourcePath": "/{proxy+}",
+          "httpMethod": "POST",
+          "apiId": "1234567890",
+          "protocol": "HTTP/1.1"
+        }
+      }
+    },
+    {
+      "eventName": "http-api-proxy",
+      "template": {
+        "version": "2.0",
+        "routeKey": "$default",
+        "rawPath": "/path/to/resource",
+        "rawQueryString": "parameter1=value1&parameter1=value2&parameter2=value",
+        "cookies": ["cookie1", "cookie2"],
+        "headers": {
+          "Header1": "value1",
+          "Header2": "value1,value2"
+        },
+        "queryStringParameters": {
+          "parameter1": "value1,value2",
+          "parameter2": "value"
+        },
+        "requestContext": {
+          "accountId": "123456789012",
+          "apiId": "api-id",
+          "authentication": {
+            "clientCert": {
+              "clientCertPem": "CERT_CONTENT",
+              "subjectDN": "www.example.com",
+              "issuerDN": "Example issuer",
+              "serialNumber": "a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1",
+              "validity": {
+                "notBefore": "May 28 12:30:02 2019 GMT",
+                "notAfter": "Aug  5 09:36:04 2021 GMT"
+              }
+            }
+          },
+          "authorizer": {
+            "jwt": {
+              "claims": {
+                "claim1": "value1",
+                "claim2": "value2"
+              },
+              "scopes": ["scope1", "scope2"]
+            }
+          },
+          "domainName": "id.execute-api.us-east-1.amazonaws.com",
+          "domainPrefix": "id",
+          "http": {
+            "method": "POST",
+            "path": "/path/to/resource",
+            "protocol": "HTTP/1.1",
+            "sourceIp": "192.168.0.1/32",
+            "userAgent": "agent"
+          },
+          "requestId": "id",
+          "routeKey": "$default",
+          "stage": "$default",
+          "time": "12/Mar/2020:19:03:58 +0000",
+          "timeEpoch": 1583348638390
+        },
+        "body": "eyJ0ZXN0IjoiYm9keSJ9",
+        "pathParameters": {
+          "parameter1": "value1"
+        },
+        "isBase64Encoded": true,
+        "stageVariables": {
+          "stageVariable1": "value1",
+          "stageVariable2": "value2"
+        }
+      }
+    },
+    {
+      "eventName": "request-authorizer",
+      "template": {
+        "type": "REQUEST",
+        "methodArn": "arn:aws:execute-api:us-east-1:123456789012:/test/GET/request",
+        "resource": "/request",
+        "path": "/request",
+        "httpMethod": "GET",
+        "headers": {
+          "X-AMZ-Date": "20170718T062915Z",
+          "Accept": "*/*",
+          "HeaderAuth1": "headerValue1",
+          "CloudFront-Viewer-Country": "US",
+          "CloudFront-Forwarded-Proto": "https",
+          "CloudFront-Is-Tablet-Viewer": "false",
+          "CloudFront-Is-Mobile-Viewer": "false",
+          "User-Agent": "..."
+        },
+        "queryStringParameters": {
+          "QueryString1": "queryValue1"
+        },
+        "pathParameters": {},
+        "stageVariables": {
+          "StageVar1": "stageValue1"
+        },
+        "requestContext": {
+          "path": "/request",
+          "accountId": "123456789012",
+          "resourceId": "05c7jb",
+          "stage": "test",
+          "requestId": "...",
+          "identity": {
+            "apiKey": "...",
+            "sourceIp": "...",
+            "clientCert": {
+              "clientCertPem": "CERT_CONTENT",
+              "subjectDN": "www.example.com",
+              "issuerDN": "Example issuer",
+              "serialNumber": "a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1",
+              "validity": {
+                "notBefore": "May 28 12:30:02 2019 GMT",
+                "notAfter": "Aug  5 09:36:04 2021 GMT"
+              }
+            }
+          },
+          "resourcePath": "/request",
+          "httpMethod": "GET",
+          "apiId": ""
+        }
+      }
+    }
+  ]
+}

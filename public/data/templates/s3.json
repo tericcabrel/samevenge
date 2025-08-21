@@ -1,0 +1,106 @@
+{
+  "service": "s3",
+  "eventNames": ["batch-invocation", "delete", "put"],
+  "lastUpdated": "2025-08-18T20:18:05.211Z",
+  "samVersion": "SAM CLI, version 1.142.1",
+  "templates": [
+    {
+      "eventName": "batch-invocation",
+      "template": {
+        "invocationSchemaVersion": "1.0",
+        "invocationId": "YXNkbGZqYWRmaiBhc2RmdW9hZHNmZGpmaGFzbGtkaGZza2RmaAo",
+        "job": {
+          "id": "f3cc4f60-61f6-4a2b-8a21-d07600c373ce"
+        },
+        "tasks": [
+          {
+            "taskId": "dGFza2lkZ29lc2hlcmUK",
+            "s3Key": "test/key",
+            "s3VersionId": "1",
+            "s3BucketArn": "arn:aws:s3:::examplebucket"
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "delete",
+      "template": {
+        "Records": [
+          {
+            "eventVersion": "2.0",
+            "eventSource": "aws:s3",
+            "awsRegion": "us-east-1",
+            "eventTime": "1970-01-01T00:00:00.000Z",
+            "eventName": "ObjectRemoved:Delete",
+            "userIdentity": {
+              "principalId": "EXAMPLE"
+            },
+            "requestParameters": {
+              "sourceIPAddress": "127.0.0.1"
+            },
+            "responseElements": {
+              "x-amz-request-id": "EXAMPLE123456789",
+              "x-amz-id-2": "EXAMPLE123/5678abcdefghijklambdaisawesome/mnopqrstuvwxyzABCDEFGH"
+            },
+            "s3": {
+              "s3SchemaVersion": "1.0",
+              "configurationId": "testConfigRule",
+              "bucket": {
+                "name": "example-bucket",
+                "ownerIdentity": {
+                  "principalId": "EXAMPLE"
+                },
+                "arn": "arn:aws:s3:::example-bucket"
+              },
+              "object": {
+                "key": "test/key",
+                "sequencer": "0A1B2C3D4E5F678901"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "put",
+      "template": {
+        "Records": [
+          {
+            "eventVersion": "2.0",
+            "eventSource": "aws:s3",
+            "awsRegion": "us-east-1",
+            "eventTime": "1970-01-01T00:00:00.000Z",
+            "eventName": "ObjectCreated:Put",
+            "userIdentity": {
+              "principalId": "EXAMPLE"
+            },
+            "requestParameters": {
+              "sourceIPAddress": "127.0.0.1"
+            },
+            "responseElements": {
+              "x-amz-request-id": "EXAMPLE123456789",
+              "x-amz-id-2": "EXAMPLE123/5678abcdefghijklambdaisawesome/mnopqrstuvwxyzABCDEFGH"
+            },
+            "s3": {
+              "s3SchemaVersion": "1.0",
+              "configurationId": "testConfigRule",
+              "bucket": {
+                "name": "example-bucket",
+                "ownerIdentity": {
+                  "principalId": "EXAMPLE"
+                },
+                "arn": "arn:aws:s3:::example-bucket"
+              },
+              "object": {
+                "key": "test/key",
+                "size": 1024,
+                "eTag": "0123456789abcdef0123456789abcdef",
+                "sequencer": "0A1B2C3D4E5F678901"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

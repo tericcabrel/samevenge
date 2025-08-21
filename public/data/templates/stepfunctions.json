@@ -1,0 +1,15 @@
+{
+  "service": "stepfunctions",
+  "eventNames": ["error"],
+  "lastUpdated": "2025-08-18T20:18:05.240Z",
+  "samVersion": "SAM CLI, version 1.142.1",
+  "templates": [
+    {
+      "eventName": "error",
+      "template": {
+        "Error": "ErrorName",
+        "Cause": "This is the cause of the error."
+      }
+    }
+  ]
+}

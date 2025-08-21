@@ -1,0 +1,466 @@
+{
+  "service": "cloudfront",
+  "eventNames": [
+    "ab-test",
+    "access-request-in-response",
+    "http-redirect",
+    "modify-querystring",
+    "modify-response-header",
+    "multiple-remote-calls-aggregate-response",
+    "normalize-querystring-to-improve-cache-hit",
+    "redirect-on-viewer-country",
+    "redirect-unauthenticated-users",
+    "response-generation",
+    "serve-object-on-viewer-device",
+    "simple-remote-call"
+  ],
+  "lastUpdated": "2025-08-18T20:18:05.364Z",
+  "samVersion": "SAM CLI, version 1.142.1",
+  "templates": [
+    {
+      "eventName": "ab-test",
+      "template": {
+        "Records": [
+          {
+            "cf": {
+              "config": {
+                "distributionId": "EXAMPLE"
+              },
+              "request": {
+                "uri": "/test",
+                "method": "GET",
+                "clientIp": "2001:cdba::3257:9652",
+                "headers": {
+                  "user-agent": [
+                    {
+                      "key": "User-Agent",
+                      "value": "Test Agent"
+                    }
+                  ],
+                  "host": [
+                    {
+                      "key": "Host",
+                      "value": "d123.cf.net"
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "key": "Cookie",
+                      "value": "SomeCookie=1; AnotherOne=A; X-Experiment-Name=B"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "access-request-in-response",
+      "template": {
+        "Records": [
+          {
+            "cf": {
+              "config": {
+                "distributionId": "EXAMPLE"
+              },
+              "request": {
+                "headers": {
+                  "host": [
+                    {
+                      "key": "Host",
+                      "value": "d123.cf.net"
+                    }
+                  ],
+                  "user-name": [
+                    {
+                      "key": "User-Name",
+                      "value": "CloudFront"
+                    }
+                  ]
+                },
+                "clientIp": "2001:cdba::3257:9652",
+                "uri": "/test",
+                "method": "GET"
+              },
+              "response": {
+                "status": "200",
+                "statusDescription": "OK",
+                "headers": {
+                  "x-cache": [
+                    {
+                      "key": "X-Cache",
+                      "value": "Hello from Cloudfront"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "http-redirect",
+      "template": {
+        "Records": [
+          {
+            "cf": {
+              "config": {
+                "distributionId": "EXAMPLE"
+              },
+              "request": {
+                "uri": "/test",
+                "method": "GET",
+                "clientIp": "2001:cdba::3257:9652",
+                "headers": {
+                  "user-agent": [
+                    {
+                      "key": "User-Agent",
+                      "value": "test-agent"
+                    }
+                  ],
+                  "host": [
+                    {
+                      "key": "Host",
+                      "value": "d123.cf.net"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "modify-querystring",
+      "template": {
+        "Records": [
+          {
+            "cf": {
+              "config": {
+                "distributionId": "EXAMPLE"
+              },
+              "request": {
+                "uri": "/test",
+                "querystring": "auth=test&foo=bar",
+                "method": "GET",
+                "clientIp": "2001:cdba::3257:9652",
+                "headers": {
+                  "host": [
+                    {
+                      "key": "Host",
+                      "value": "d123.cf.net"
+                    }
+                  ],
+                  "user-agent": [
+                    {
+                      "key": "User-Agent",
+                      "value": "Test Agent"
+                    }
+                  ],
+                  "user-name": [
+                    {
+                      "key": "User-Name",
+                      "value": "aws-cloudfront"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "modify-response-header",
+      "template": {
+        "Records": [
+          {
+            "cf": {
+              "config": {
+                "distributionId": "EXAMPLE"
+              },
+              "response": {
+                "status": "200",
+                "statusDescription": "OK",
+                "headers": {
+                  "vary": [
+                    {
+                      "key": "Vary",
+                      "value": "*"
+                    }
+                  ],
+                  "last-modified": [
+                    {
+                      "key": "Last-Modified",
+                      "value": "2016-11-25"
+                    }
+                  ],
+                  "x-amz-meta-last-modified": [
+                    {
+                      "key": "X-Amz-Meta-Last-Modified",
+                      "value": "2016-01-01"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "multiple-remote-calls-aggregate-response",
+      "template": {
+        "Records": [
+          {
+            "cf": {
+              "config": {
+                "distributionId": "EXAMPLE"
+              },
+              "request": {
+                "uri": "/forecast/Seattle:NewYork:Chicago:SanFrancisco",
+                "method": "GET",
+                "clientIp": "2001:cdba::3257:9652",
+                "headers": {
+                  "host": [
+                    {
+                      "key": "Host",
+                      "value": "d123.cf.net"
+                    }
+                  ],
+                  "user-agent": [
+                    {
+                      "key": "User-Agent",
+                      "value": "Test Agent"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "normalize-querystring-to-improve-cache-hit",
+      "template": {
+        "Records": [
+          {
+            "cf": {
+              "config": {
+                "distributionId": "EXAMPLE"
+              },
+              "request": {
+                "uri": "/test",
+                "querystring": "size=LARGE&color=RED",
+                "method": "GET",
+                "clientIp": "2001:cdba::3257:9652",
+                "headers": {
+                  "host": [
+                    {
+                      "key": "Host",
+                      "value": "d123.cf.net"
+                    }
+                  ],
+                  "user-agent": [
+                    {
+                      "key": "User-Agent",
+                      "value": "Test Agent"
+                    }
+                  ],
+                  "user-name": [
+                    {
+                      "key": "User-Name",
+                      "value": "aws-cloudfront"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "redirect-on-viewer-country",
+      "template": {
+        "Records": [
+          {
+            "cf": {
+              "config": {
+                "distributionId": "EXAMPLE"
+              },
+              "request": {
+                "uri": "/test",
+                "method": "GET",
+                "clientIp": "2001:cdba::3257:9652",
+                "headers": {
+                  "host": [
+                    {
+                      "key": "Host",
+                      "value": "d123.cf.net"
+                    }
+                  ],
+                  "cloudfront-viewer-country": [
+                    {
+                      "key": "CloudFront-Viewer-Country",
+                      "value": "TW"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "redirect-unauthenticated-users",
+      "template": {
+        "Records": [
+          {
+            "cf": {
+              "config": {
+                "distributionId": "EXAMPLE"
+              },
+              "request": {
+                "uri": "/test",
+                "method": "GET",
+                "querystring": "foo=bar",
+                "headers": {
+                  "host": [
+                    {
+                      "key": "Host",
+                      "value": "d123.cf.net"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "response-generation",
+      "template": {
+        "Records": [
+          {
+            "cf": {
+              "config": {
+                "distributionId": "EXAMPLE"
+              },
+              "request": {
+                "uri": "/test",
+                "method": "GET",
+                "clientIp": "2001:cdba::3257:9652",
+                "headers": {
+                  "host": [
+                    {
+                      "key": "Host",
+                      "value": "d123.cf.net"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "serve-object-on-viewer-device",
+      "template": {
+        "Records": [
+          {
+            "cf": {
+              "config": {
+                "distributionId": "EXAMPLE"
+              },
+              "request": {
+                "uri": "/test",
+                "method": "GET",
+                "clientIp": "2001:cdba::3257:9652",
+                "headers": {
+                  "host": [
+                    {
+                      "key": "Host",
+                      "value": "d123.cf.net"
+                    }
+                  ],
+                  "cloudfront-is-desktop-viewer": [
+                    {
+                      "key": "CloudFront-Is-Desktop-Viewer",
+                      "value": "true"
+                    }
+                  ],
+                  "cloudfront-is-mobile-viewer": [
+                    {
+                      "key": "CloudFront-Is-Mobile-Viewer",
+                      "value": "false"
+                    }
+                  ],
+                  "cloudfront-is-smarttv-viewer": [
+                    {
+                      "key": "CloudFront-Is-SmartTV-Viewer",
+                      "value": "false"
+                    }
+                  ],
+                  "cloudfront-is-tablet-viewer": [
+                    {
+                      "key": "CloudFront-Is-Tablet-Viewer",
+                      "value": "false"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "eventName": "simple-remote-call",
+      "template": {
+        "Records": [
+          {
+            "cf": {
+              "config": {
+                "distributionId": "EXAMPLE"
+              },
+              "request": {
+                "uri": "/test",
+                "method": "GET",
+                "clientIp": "2001:cdba::3257:9652",
+                "headers": {
+                  "host": [
+                    {
+                      "key": "Host",
+                      "value": "d123.cf.net"
+                    }
+                  ],
+                  "user-agent": [
+                    {
+                      "key": "User-Agent",
+                      "value": "Test Agent"
+                    }
+                  ],
+                  "user-name": [
+                    {
+                      "key": "User-Name",
+                      "value": "aws-cloudfront"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "service": "cloudwatch",
+  "eventNames": ["logs", "scheduled-event"],
+  "lastUpdated": "2025-08-18T20:18:04.974Z",
+  "samVersion": "SAM CLI, version 1.142.1",
+  "templates": [
+    {
+      "eventName": "logs",
+      "template": {
+        "awslogs": {
+          "data": "H4sIAAAAAAAAAHWPwQqCQBCGX0Xm7EFtK+smZBEUgXoLCdMhFtKV3akI8d0bLYmibvPPN3wz00CJxmQnTO41whwWQRIctmEcB6sQbFC3CjW3XW8kxpOpP+OC22d1Wml1qZkQGtoMsScxaczKN3plG8zlaHIta5KqWsozoTYw3/djzwhpLwivWFGHGpAFe7DL68JlBUk+l7KSN7tCOEJ4M3/qOI49vMHj+zCKdlFqLaU2ZHV2a4Ct/an0/ivdX8oYc1UVX860fQDQiMdxRQEAAA=="
+        }
+      }
+    },
+    {
+      "eventName": "scheduled-event",
+      "template": {
+        "id": "cdc73f9d-aea9-11e3-9d5a-835b769c0d9c",
+        "detail-type": "Scheduled Event",
+        "source": "aws.events",
+        "account": "123456789012",
+        "time": "1970-01-01T00:00:00Z",
+        "region": "us-east-1",
+        "resources": ["arn:aws:events:us-east-1:123456789012:rule/ExampleRule"],
+        "detail": {}
+      }
+    }
+  ]
+}
