@@ -24,7 +24,10 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Lint the projects
-        run: yarn lint
+        run: |
+          yarn type-check
+          yarn lint
+          yarn format
 
       - name: Build the projects
         env:
@@ -38,6 +41,7 @@ jobs:
   deploy-website:
     runs-on: ubuntu-24.04
     environment: 'Preview'
+    needs: build
     steps:
       - uses: actions/checkout@v4
 

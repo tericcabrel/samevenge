@@ -54,7 +54,7 @@ async function generateServiceTemplates(service) {
       const commandLines = lines.slice(commandsIndex + 1);
 
       const events = commandLines
-        .map((line) => line.replaceAll(/^  /gm, '')) // Remove two first leading spaces on the line
+        .map((line) => line.replaceAll(/^ {2}/gm, '')) // Remove two first leading spaces on the line
         .filter((line) => line && !line.startsWith('-') && !line.startsWith('Options:'))
         .map((line, index) => {
           if (line.charAt(0) === ' ') {
@@ -68,7 +68,7 @@ async function generateServiceTemplates(service) {
 
           let description = line.split(match[1])[1].trim();
           if (index + 1 <= commandLines.length) {
-            const nextLine = commandLines[index + 1].replaceAll(/^  /gm, '');
+            const nextLine = commandLines[index + 1].replaceAll(/^ {2}/gm, '');
             if (nextLine.charAt(0) === ' ') {
               description += ` ${nextLine.trim()}`;
             }

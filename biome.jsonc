@@ -22,7 +22,7 @@
       "!**/node_modules",
       "!**/.next",
       "!**/.yarn",
-      "!src/styles/globals.css"
+      "!src/app/globals.css"
     ],
     "ignoreUnknown": false
   },

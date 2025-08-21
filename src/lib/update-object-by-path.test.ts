@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { updateObjectByPath } from '../update-object-by-path';
+import { updateObjectByPath } from './update-object-by-path';
 
 describe('updateObjectByPath', () => {
   describe('basic object path updates', () => {
@@ -12,11 +12,12 @@ describe('updateObjectByPath', () => {
     });
 
     it('should update a nested property', () => {
-      const obj = { user: { name: 'John', age: 30 } };
+      const age = 30;
+      const obj = { user: { name: 'John', age } };
       const result = updateObjectByPath(obj, 'user.name', 'Jane');
 
       expect(result.user.name).toBe('Jane');
-      expect(result.user.age).toBe(30); // Other properties should remain unchanged
+      expect(result.user.age).toBe(age); // Other properties should remain unchanged
     });
 
     it('should update deeply nested properties', () => {
@@ -93,16 +94,17 @@ describe('updateObjectByPath', () => {
           [{ value: 3 }, { value: 4 }],
         ],
       };
-
+      const value = 99;
+      const rowOneColumnZeroValue = 3;
       // Note: Current implementation doesn't handle multiple array notations properly
       // The path "matrix[1][0].value" gets split into ["matrix[1][0]", "value"]
       // The function only parses the first bracket, so it goes to matrix[1] and ignores [0]
       // Then it sets the "value" property directly on the array (matrix[1])
-      const result = updateObjectByPath(obj, 'matrix[1][0].value', 99);
+      const result = updateObjectByPath(obj, 'matrix[1][0].value', value);
 
       // The function sets matrix[1].value = 99 (adds value property to the array)
-      expect(result.matrix[1].value).toBe(99);
-      expect(result.matrix[1][0].value).toBe(3); // Original array elements unchanged
+      expect(result.matrix[1].value).toBe(value);
+      expect(result.matrix[1][0].value).toBe(rowOneColumnZeroValue); // Original array elements unchanged
       expect(result.matrix[0][0].value).toBe(1); // Other elements unchanged
     });
   });
@@ -178,7 +180,7 @@ describe('updateObjectByPath', () => {
 
       // When path is empty, it should update the final key which would be undefined
       // This is a bit of an edge case - the function expects at least one key
-      expect(() => updateObjectByPath(obj, '', newValue)).not.toThrow();
+      expect(() => updateObjectByPath(obj, '', newValue)).toThrow('Invalid path');
     });
 
     it('should handle single property path', () => {
@@ -203,8 +205,9 @@ describe('updateObjectByPath', () => {
     });
 
     it('should handle large array indices', () => {
+      const arraySize = 100;
       const obj = {
-        data: new Array(100).fill(null).map((_, i) => ({ id: i })),
+        data: new Array(arraySize).fill(null).map((_, i) => ({ id: i })),
       };
 
       const result = updateObjectByPath(obj, 'data[99].id', 'updated');
@@ -246,9 +249,10 @@ describe('updateObjectByPath', () => {
 
     it('should handle number values in objects', () => {
       const obj = { config: { timeout: 0 } };
-      const result = updateObjectByPath(obj, 'config.timeout', 5000);
+      const timeout = 5000;
+      const result = updateObjectByPath(obj, 'config.timeout', timeout);
 
-      expect(result.config.timeout).toBe(5000);
+      expect(result.config.timeout).toBe(timeout);
       expect(typeof result.config.timeout).toBe('number');
     });
 
