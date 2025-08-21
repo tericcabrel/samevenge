@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 const url = process.env.NEXT_PUBLIC_APP_URL;
-const title = 'AWS SAM Event Generator';
+const title = 'AWS SAM Event Generator Online';
 const description = 'Generate AWS SAM events for local testing';
 
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
       {
         alt: 'AWS SAM Event Generator',
         height: 720,
-        url: `${url}/og.png`,
+        url: `${url}/images/og.png`,
         width: 1280,
       },
     ],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
       {
         alt: title,
         height: 720,
-        url: `${url}/og.png`,
+        url: `${url}/images/og.png`,
         width: 1280,
       },
     ],
