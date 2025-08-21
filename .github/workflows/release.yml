@@ -42,6 +42,7 @@ jobs:
   deploy-website:
     runs-on: ubuntu-24.04
     environment: 'Production'
+    needs: build
     steps:
       - uses: actions/checkout@v4
 
