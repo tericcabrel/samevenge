@@ -24,7 +24,10 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Lint the projects
-        run: yarn lint
+        run: |
+          yarn type-check
+          yarn lint
+          yarn format
 
       - name: Build the projects
         env:

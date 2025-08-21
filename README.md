@@ -2,7 +2,7 @@
 
 A modern web application built with Next.js that generates AWS SAM event payloads for local testing. This tool helps developers quickly generate realistic event payloads for various AWS services to test serverless functions locally using AWS SAM CLI.
 
-![demo](https://raw.githubusercontent.com/tericcabrel/savemenge/main/public/images/og.png)
+![demo](https://raw.githubusercontent.com/tericcabrel/samevenge/main/public/images/og.png)
 
 ## 🚀 Features
 
